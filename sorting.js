@@ -355,3 +355,40 @@ for (let i = dataArray.length - 1; i >= 0; i--) {
   dataList.insertFirst(Number(dataArray[i]));
 }
 display(linkedListMergeSort(dataList));
+
+function bucketSort(array, minVal, maxVal) {
+  const vals = new Map();
+  let ticks = 1;
+  for (let i = 0; i < array.length; i++) {
+    ticks++;
+    if (vals.has(array[i])) {
+      vals.set(array[i], vals.get(array[i]) + 1);
+    }
+    else {
+      vals.set(array[i], 1);
+    }
+  }
+  const output = [];
+  for (let i = minVal; i <= maxVal; i++) {
+    ticks++;
+    if (vals.has(i)) {
+      let count = vals.get(i);
+      while (count > 0) {
+        ticks++;
+        output.push(i);
+        count--;
+      }
+    }
+  }
+  return [output, array.length, ticks];
+}
+
+const numberArray = [];
+for (let i = 0; i < dataArray.length; i++) {
+  numberArray.push(Number(dataArray[i]));
+  numberArray.push(Number(dataArray[i]));
+  numberArray.push(Number(dataArray[i]));
+  numberArray.push(Number(dataArray[i]));
+  numberArray.push(Number(dataArray[i]));
+}
+console.log(bucketSort(numberArray, 1, 98));
