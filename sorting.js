@@ -50,7 +50,7 @@ function quickSort(array, start = 0, end = array.length) {
   array = quickSort(array, middle + 1, end);
   return array;
 }
-[15,13,10,3,9,12,14,16,19,17]
+
 function partition(array, start, end) {
   const pivot = array[end - 1];
   let j = start;
@@ -396,3 +396,11 @@ function randomizeArray(array) {
 const sortedArray = bucketSort(numberArray, 1, 98);
 console.log(sortedArray);
 console.log(randomizeArray(sortedArray));
+
+const books = ['Test title', 'Another test title', 'Check this title', 'I am a book', 'This is a book', 'What a book!', 'Oooo! A book!', 'I am a book too'];
+
+function sortBooks(books) {
+  return mergeSort(books);
+}
+
+console.log(sortBooks(books));
