@@ -358,9 +358,7 @@ display(linkedListMergeSort(dataList));
 
 function bucketSort(array, minVal, maxVal) {
   const vals = new Map();
-  let ticks = 1;
   for (let i = 0; i < array.length; i++) {
-    ticks++;
     if (vals.has(array[i])) {
       vals.set(array[i], vals.get(array[i]) + 1);
     }
@@ -370,25 +368,31 @@ function bucketSort(array, minVal, maxVal) {
   }
   const output = [];
   for (let i = minVal; i <= maxVal; i++) {
-    ticks++;
     if (vals.has(i)) {
       let count = vals.get(i);
       while (count > 0) {
-        ticks++;
         output.push(i);
         count--;
       }
     }
   }
-  return [output, array.length, ticks];
+  return output;
 }
 
 const numberArray = [];
 for (let i = 0; i < dataArray.length; i++) {
   numberArray.push(Number(dataArray[i]));
-  numberArray.push(Number(dataArray[i]));
-  numberArray.push(Number(dataArray[i]));
-  numberArray.push(Number(dataArray[i]));
-  numberArray.push(Number(dataArray[i]));
 }
 console.log(bucketSort(numberArray, 1, 98));
+
+function randomizeArray(array) {
+  for (let i = 0; i < array.length; i++) {
+    let random = Math.floor(Math.random() * array.length);
+    swap(array, i, random);
+  }
+  return array;
+}
+
+const sortedArray = bucketSort(numberArray, 1, 98);
+console.log(sortedArray);
+console.log(randomizeArray(sortedArray));
